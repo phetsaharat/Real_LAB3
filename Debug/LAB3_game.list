@@ -21,31 +21,31 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   8 .data         0000000c  20000000  08005ab0  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000208  20000010  08005abc  00020010  2**3
+  9 .bss          000001f8  20000010  08005abc  00020010  2**3
                   ALLOC
- 10 ._user_heap_stack 00000600  20000218  08005abc  00020218  2**0
+ 10 ._user_heap_stack 00000600  20000208  08005abc  00020208  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
  12 .comment      00000043  00000000  00000000  0002003c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000f5af  00000000  00000000  0002007f  2**0
+ 13 .debug_info   0000f59f  00000000  00000000  0002007f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00002080  00000000  00000000  0002f62e  2**0
+ 14 .debug_abbrev 00002080  00000000  00000000  0002f61e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000c28  00000000  00000000  000316b0  2**3
+ 15 .debug_aranges 00000c28  00000000  00000000  000316a0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 00000966  00000000  00000000  000322d8  2**0
+ 16 .debug_rnglists 00000966  00000000  00000000  000322c8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00024660  00000000  00000000  00032c3e  2**0
+ 17 .debug_macro  00024660  00000000  00000000  00032c2e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000ee02  00000000  00000000  0005729e  2**0
+ 18 .debug_line   0000ee02  00000000  00000000  0005728e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000e7e55  00000000  00000000  000660a0  2**0
+ 19 .debug_str    000e7e55  00000000  00000000  00066090  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  000031b4  00000000  00000000  0014def8  2**2
+ 20 .debug_frame  000031b4  00000000  00000000  0014dee8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000065  00000000  00000000  001510ac  2**0
+ 21 .debug_line_str 00000065  00000000  00000000  0015109c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -499,14 +499,14 @@ int main(void)
 		current_score = RxBuffer[1];
  80005e4:	e7a9      	b.n	800053a <main+0x26>
  80005e6:	bf00      	nop
- 80005e8:	200001fc 	.word	0x200001fc
- 80005ec:	20000210 	.word	0x20000210
- 80005f0:	20000211 	.word	0x20000211
- 80005f4:	20000208 	.word	0x20000208
+ 80005e8:	200001ec 	.word	0x200001ec
+ 80005ec:	20000200 	.word	0x20000200
+ 80005f0:	20000201 	.word	0x20000201
+ 80005f4:	200001f8 	.word	0x200001f8
  80005f8:	200001e4 	.word	0x200001e4
- 80005fc:	20000204 	.word	0x20000204
- 8000600:	20000205 	.word	0x20000205
- 8000604:	20000200 	.word	0x20000200
+ 80005fc:	200001f4 	.word	0x200001f4
+ 8000600:	200001f5 	.word	0x200001f5
+ 8000604:	200001f0 	.word	0x200001f0
  8000608:	2000002c 	.word	0x2000002c
 
 0800060c <SystemClock_Config>:
@@ -1067,7 +1067,7 @@ void UART_Receive() {
  800094a:	bf00      	nop
  800094c:	bd80      	pop	{r7, pc}
  800094e:	bf00      	nop
- 8000950:	200001fc 	.word	0x200001fc
+ 8000950:	200001ec 	.word	0x200001ec
  8000954:	2000002c 	.word	0x2000002c
 
 08000958 <HAL_UART_RxCpltCallback>:
@@ -1097,7 +1097,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
  8000978:	bd80      	pop	{r7, pc}
  800097a:	bf00      	nop
  800097c:	2000002c 	.word	0x2000002c
- 8000980:	200001fc 	.word	0x200001fc
+ 8000980:	200001ec 	.word	0x200001ec
 
 08000984 <SPITxRx_Setup>:
 void SPITxRx_Setup() {
@@ -1168,7 +1168,7 @@ void SPITxRx_readIO() {
  80009f0:	bf00      	nop
  80009f2:	bd80      	pop	{r7, pc}
  80009f4:	48000c00 	.word	0x48000c00
- 80009f8:	200001f0 	.word	0x200001f0
+ 80009f8:	200001e8 	.word	0x200001e8
  80009fc:	200001e4 	.word	0x200001e4
  8000a00:	20000180 	.word	0x20000180
 
@@ -2017,7 +2017,7 @@ LoopForever:
   ldr r2, =_sbss
  8000da8:	20000010 	.word	0x20000010
   ldr r4, =_ebss
- 8000dac:	20000218 	.word	0x20000218
+ 8000dac:	20000208 	.word	0x20000208
 
 08000db0 <ADC1_2_IRQHandler>:
  * @retval : None
@@ -2191,7 +2191,7 @@ __weak void HAL_IncTick(void)
  8000e6c:	46bd      	mov	sp, r7
  8000e6e:	f85d 7b04 	ldr.w	r7, [sp], #4
  8000e72:	4770      	bx	lr
- 8000e74:	20000214 	.word	0x20000214
+ 8000e74:	20000204 	.word	0x20000204
  8000e78:	20000008 	.word	0x20000008
 
 08000e7c <HAL_GetTick>:
@@ -2212,7 +2212,7 @@ __weak uint32_t HAL_GetTick(void)
  8000e88:	f85d 7b04 	ldr.w	r7, [sp], #4
  8000e8c:	4770      	bx	lr
  8000e8e:	bf00      	nop
- 8000e90:	20000214 	.word	0x20000214
+ 8000e90:	20000204 	.word	0x20000204
 
 08000e94 <HAL_Delay>:
   *       implementations in user file.

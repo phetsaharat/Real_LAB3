@@ -47,8 +47,8 @@ DMA_HandleTypeDef hdma_lpuart1_tx;
 SPI_HandleTypeDef hspi3;
 
 /* USER CODE BEGIN PV */
-uint8_t SPIRx[10];
-uint8_t SPITx[10];
+uint8_t SPIRx[4];
+uint8_t SPITx[4];
 
 uint8_t RxBuffer[4];
 uint8_t TxBuffer[4];
