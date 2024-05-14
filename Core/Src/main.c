@@ -55,6 +55,9 @@ uint8_t TxBuffer[4];
 uint8_t mouse_x;
 uint8_t mouse_y;
 uint64_t time = 0;
+
+uint8_t current_score;
+uint8_t high_score;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -114,6 +117,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		current_score = RxBuffer[1];
+		high_score = RxBuffer[2];
 		if (time + 1000 >= HAL_GetTick()) {
 			SPITxRx_readIO();
 			if (SPIRx[2] == 2) {
@@ -347,7 +352,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void UART_Receive() {
-	HAL_UART_Receive_IT(&hlpuart1, RxBuffer, 3);
+	HAL_UART_Receive_IT(&hlpuart1, RxBuffer, 4);
 }
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 	if (huart == &hlpuart1) {
