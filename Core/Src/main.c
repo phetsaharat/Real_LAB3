@@ -114,7 +114,28 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
+		if (time + 1000 >= HAL_GetTick()) {
+			SPITxRx_readIO();
+			if (SPIRx[2] == 2) {
+				mouse_x = 100;
+				mouse_y = 150;
+			}
+			if (SPIRx[2] == 1) {
+				mouse_x = 250;
+				mouse_y = 150;
+			}
+			if (SPIRx[2] == 3) {
+				mouse_x = 0;
+				mouse_y = 0;
+			}
+			TxBuffer[0] = 20;
+			TxBuffer[1] = mouse_x;
+			TxBuffer[2] = mouse_y;
+			TxBuffer[3] = '\n';
+			//
+			HAL_UART_Transmit_IT(&hlpuart1, TxBuffer, 4);
+			time = HAL_GetTick();
+		}
 	}
   /* USER CODE END 3 */
 }
